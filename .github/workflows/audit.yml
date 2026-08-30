@@ -1,0 +1,14 @@
+name: survival-audit
+on:
+  pull_request:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: croviatrust/causari@v1
