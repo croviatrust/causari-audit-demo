@@ -12,8 +12,8 @@ the current release, this week, not the week the demo was written.
 
 What it shows: [pull request #1](https://github.com/croviatrust/causari-audit-demo/pull/1)
 adds four lines in one commit that carries a `Co-Authored-By: Claude`
-trailer. The sticky comment on that PR is the audit of that branch:
-3 commits, 1 AI-tagged, 4 of 4 lines still at HEAD. The same comment
+trailer. The sticky comment on that PR is the audit of that branch merged with
+`main`: 1 AI-tagged commit, 4 of 4 lines still at HEAD. The same comment
 says the sample is below the floor of 5 commits and that no age-matched
 gap can be computed. That is the honest result for a repository this
 small: counts, not a rate, and not a grade.
