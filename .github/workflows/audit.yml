@@ -1,14 +1,27 @@
 name: survival-audit
 on:
   pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "23 7 * * 1" # Mondays: proves the published action still installs and runs
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   audit:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # re audit refuses a shallow clone
       - uses: croviatrust/causari@v1
+      - name: the JSON the comment is made from
+        run: re audit --json | tee causari-audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: causari-audit-json
+          path: causari-audit.json
